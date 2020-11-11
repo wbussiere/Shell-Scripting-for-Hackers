@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# This line declares what interpreter I am using, in this case it's Bash
+
+# Willis Bussiere, NTS370 Project 1.2
+
+# This script's purpose is to utilize the awk command to parse three fields (User Name, Home Directory, Shell) from the /etc/passwd file and then place them into a new text file which has been sorted alphabetically
+
+# Last revision date: 9/16/2020
+
+# awk command used to list the 1st, 6th, and 7th fields of the passwd file then the sort command is used to list the output alphabetically then its added to a newly created .txt file 
+
+awk -F: '{print $1,$6,$7}' /etc/passwd | sort > Project1.2.txt
+

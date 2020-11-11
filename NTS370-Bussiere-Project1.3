@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Willis Bussiere-NTS370-Project1.3
+
+# The purpose of this script is to intiate an NMAP scan of the NTS370 class server after taking user input desi  gnating the range ip of the scan.An if statement was included which will either begin the NMAP scan or resta   rt the user input stage of the script depending on the input from the user.The results of the NMAP scan are c  opied into a newly created text file.
+
+# Last revison date: 9/18/20
+
+# Start function declaration.The function asks the user for ip range input (start/end) and confirms their input  using three variables.
+
+start(){
+	echo "Please enter the starting ip for your NMAP scan (4th quartet)"
+	read start
+
+	echo "Please enter the ending ip for your NMAP scan (4th quartet)"
+	read end 
+
+	echo "The ip range you entered is 10.140.1.$start to 10.140.1.$end, is this correct? y/n?"
+	read answer
+}
+
+# Start functiion is activated and an if statement is introduced.If the user confirms the ip range with a "y" i  nput then NMAP is activated and the user's desired ip range is scanned.The NMAP output is displayed and copi   ed into a  new text file. If the user indicates that their ip range input is incorrect with an "n" then the s  tart function is reactivated.  
+
+start
+
+if [ $answer = "y" ]
+then
+	nmap -oN nmapscanresults.txt 10.140.1.$start-$end 
+else
+
+	start
+fi
+
